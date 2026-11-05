@@ -69,6 +69,24 @@
           <p class="form-sub-desc">
             Complete the form below to enter the SYNTHEX 2026 Pitch Competition.
           </p>
+
+          <!-- Guideline PDF Button -->
+          <a href="Guideline.pdf" target="_blank" rel="noopener" class="guideline-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="12" y1="18" x2="12" y2="12"/>
+              <line x1="9" y1="15" x2="12" y2="18"/>
+              <line x1="15" y1="15" x2="12" y2="18"/>
+            </svg>
+            <span>View Submission Guidelines</span>
+          </a>
+
+          <!-- Guideline Reminder -->
+          <p class="guideline-reminder">
+            Please read the <span class="guideline-inline-link">Submission Guidelines</span> before submitting your idea.
+          </p>
+
         </div>
 
         <!-- Glassmorphism Form Card -->
@@ -378,24 +396,57 @@
               </div>
             </div>
 
-            <!-- Field 5: Describe Your Idea -->
-            <div class="form-group" id="group-description">
-              <div class="label-with-counter">
-                <label for="description" class="form-label">
-                  Describe Your Idea <span class="required-star">*</span>
-                </label>
-                <span id="char-counter" class="char-count">0 characters</span>
-              </div>
-              <div class="textarea-wrapper">
-                <textarea 
-                  id="description" 
-                  name="description" 
-                  class="form-control form-textarea" 
-                  rows="5" 
+            <!-- Field 5: Upload Your Concept Paper -->
+            <div class="form-group" id="group-conceptPaper">
+              <label class="form-label">
+                Upload Your Concept Paper <span class="required-star">*</span>
+              </label>
+              <div class="file-upload-wrapper" id="file-upload-wrapper">
+                <input
+                  type="file"
+                  id="conceptPaper"
+                  name="conceptPaper"
+                  class="file-upload-input"
+                  accept=".pdf,.doc,.docx"
                   required
-                  placeholder="Provide an overview of your research idea: What problem does it solve? What is your methodology or proposed technology? What impact do you anticipate?"
-                ></textarea>
-                <span class="validation-badge"></span>
+                >
+                <label for="conceptPaper" class="file-upload-label">
+                  <div class="file-upload-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                      <polyline points="17 8 12 3 7 8"/>
+                      <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                  </div>
+                  <div class="file-upload-text">
+                    <span class="file-upload-title" id="file-upload-title">Click to upload your concept paper</span>
+                    <span class="file-upload-hint">PDF, DOC, or DOCX &nbsp;&bull;&nbsp; Max 10MB</span>
+                  </div>
+                </label>
+                <div class="file-selected-info" id="file-selected-info" style="display:none;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                  </svg>
+                  <span id="file-selected-name"></span>
+                  <button type="button" class="file-remove-btn" id="file-remove-btn" aria-label="Remove file">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Concept Paper Template Download Link -->
+              <div class="template-download-box">
+                <a href="Research_Concept_Paper.docx" download="Research_Concept_Paper.docx" class="template-download-link">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                    <polyline points="7 10 12 15 17 10"/>
+                    <line x1="12" y1="15" x2="12" y2="3"/>
+                  </svg>
+                  <span>Click here to download concept paper template</span>
+                </a>
               </div>
             </div>
 

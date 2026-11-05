@@ -619,11 +619,73 @@ function initFormInteractions() {
     });
   }
 
-  // Live Character Counter
+  // Live Character Counter (if description exists)
   if (descTextarea && charCounter) {
     descTextarea.addEventListener("input", () => {
       const len = descTextarea.value.length;
       charCounter.textContent = `${len} character${len === 1 ? "" : "s"}`;
+    });
+  }
+
+  // Concept Paper File Upload Interactions
+  const fileInput = document.getElementById("conceptPaper");
+  const fileWrapper = document.getElementById("file-upload-wrapper");
+  const fileSelectedInfo = document.getElementById("file-selected-info");
+  const fileSelectedName = document.getElementById("file-selected-name");
+  const fileRemoveBtn = document.getElementById("file-remove-btn");
+  const fileUploadLabel = document.querySelector(".file-upload-label");
+
+  if (fileInput && fileWrapper) {
+    fileInput.addEventListener("change", () => {
+      if (fileInput.files && fileInput.files[0]) {
+        const file = fileInput.files[0];
+        if (fileSelectedName) fileSelectedName.textContent = file.name;
+        if (fileSelectedInfo) fileSelectedInfo.style.display = "flex";
+        if (fileUploadLabel) fileUploadLabel.style.display = "none";
+        fileWrapper.classList.add("has-file");
+        const group = document.getElementById("group-conceptPaper");
+        if (group) {
+          group.classList.remove("has-error");
+          group.classList.add("has-success");
+        }
+      }
+    });
+
+    if (fileRemoveBtn) {
+      fileRemoveBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        fileInput.value = "";
+        if (fileSelectedInfo) fileSelectedInfo.style.display = "none";
+        if (fileUploadLabel) fileUploadLabel.style.display = "flex";
+        fileWrapper.classList.remove("has-file");
+        const group = document.getElementById("group-conceptPaper");
+        if (group) group.classList.remove("has-success");
+      });
+    }
+
+    ["dragenter", "dragover"].forEach(evtName => {
+      fileWrapper.addEventListener(evtName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        fileWrapper.classList.add("drag-over");
+      });
+    });
+
+    ["dragleave", "drop"].forEach(evtName => {
+      fileWrapper.addEventListener(evtName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        fileWrapper.classList.remove("drag-over");
+      });
+    });
+
+    fileWrapper.addEventListener("drop", (e) => {
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0]) {
+        fileInput.files = e.dataTransfer.files;
+        const changeEvent = new Event("change");
+        fileInput.dispatchEvent(changeEvent);
+      }
     });
   }
 
@@ -771,13 +833,16 @@ async function handleFormSubmit(e) {
   if (!batch) markError("group-batch");
 
   // 2. Proposal Details Validation (Unified)
-  const topic = document.getElementById("topic").value.trim();
-  const description = document.getElementById("description").value.trim();
-  const email = document.getElementById("email").value.trim();
-  const phone = document.getElementById("phone").value.trim();
+  const topic = document.getElementById("topic") ? document.getElementById("topic").value.trim() : "";
+  const descElem = document.getElementById("description");
+  const fileElem = document.getElementById("conceptPaper");
+  const description = descElem ? descElem.value.trim() : (fileElem && fileElem.files && fileElem.files[0] ? fileElem.files[0].name : "");
+  const email = document.getElementById("email") ? document.getElementById("email").value.trim() : "";
+  const phone = document.getElementById("phone") ? document.getElementById("phone").value.trim() : "";
 
   if (!topic) markError("group-topic");
-  if (!description) markError("group-description");
+  if (descElem && !description) markError("group-description");
+  if (fileElem && (!fileElem.files || fileElem.files.length === 0)) markError("group-conceptPaper");
   if (!email) {
     markError("group-email");
   } else if (!isValidEmail(email)) {

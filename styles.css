@@ -53,6 +53,11 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  caret-color: transparent;
+}
+
+input, textarea, [contenteditable="true"] {
+  caret-color: auto;
 }
 
 @font-face {
@@ -303,14 +308,14 @@ body {
   padding: 0.55rem 1.35rem;
   border-radius: 999px;
   border: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 255, 135, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
   transition: var(--transition-smooth);
 }
 
 .nav-cta-btn:hover {
   transform: translateY(-1px);
   filter: brightness(1.04);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 255, 135, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
 }
 
 /* Submissions Closed State Styles */
@@ -467,7 +472,7 @@ body {
 .closed-home-btn:hover {
   background: rgba(0, 255, 135, 0.2);
   border-color: var(--accent-green);
-  box-shadow: 0 0 20px rgba(0, 255, 135, 0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   transform: translateY(-2px);
 }
 
@@ -650,13 +655,13 @@ body {
   border-radius: 999px;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 255, 135, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
   transition: var(--transition-spring);
 }
 
 .cta-primary-btn:hover {
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.55), 0 3px 8px rgba(0, 255, 135, 0.25);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.55);
   filter: brightness(1.05);
 }
 
@@ -694,7 +699,7 @@ body {
   background: rgba(5, 24, 46, 0.9);
   border-color: var(--accent-green);
   color: var(--accent-green);
-  box-shadow: 0 0 20px rgba(0, 255, 135, 0.25);
+  box-shadow: none;
   transform: translateY(-2px);
 }
 
@@ -708,7 +713,7 @@ body {
 .hero-about-btn:hover {
   border-color: var(--accent-teal);
   color: var(--accent-teal);
-  box-shadow: 0 0 20px rgba(0, 245, 212, 0.3);
+  box-shadow: none;
 }
 
 /* "Explore Tracks" Tertiary CTA */
@@ -1190,7 +1195,7 @@ body {
 /* Highlight glow when focused or navigated to */
 .modern-form.form-active-glow {
   border-color: var(--accent-green);
-  box-shadow: 0 0 50px rgba(0, 255, 135, 0.35), var(--shadow-card);
+  box-shadow: var(--shadow-card);
 }
 
 /* Form Groups & Labels */
@@ -1267,7 +1272,7 @@ body {
 .form-control:focus {
   border-color: var(--accent-green);
   background: #041224;
-  box-shadow: 0 0 0 3px rgba(0, 255, 135, 0.18), 0 0 20px rgba(0, 255, 135, 0.2);
+  box-shadow: none;
 }
 
 .form-control:focus + .validation-badge,
@@ -1384,14 +1389,14 @@ body {
 .type-toggle-btn.active {
   background: linear-gradient(135deg, rgba(0, 255, 135, 0.16), rgba(4, 20, 38, 0.85));
   border-color: var(--accent-green);
-  box-shadow: 0 4px 18px rgba(0, 255, 135, 0.2);
+  box-shadow: none;
   transform: translateY(-2px);
 }
 
 .type-toggle-btn.active .type-radio-indicator {
   border-color: var(--accent-green);
   background-color: var(--accent-green);
-  box-shadow: 0 0 10px var(--accent-green);
+  box-shadow: none;
 }
 
 .type-toggle-btn.active .type-icon {
@@ -1754,14 +1759,14 @@ body {
   background: linear-gradient(135deg, rgba(0, 255, 135, 0.2), rgba(5, 24, 46, 0.8));
   border-color: var(--accent-green);
   color: var(--accent-green);
-  box-shadow: 0 0 20px rgba(0, 255, 135, 0.32);
+  box-shadow: none;
   transform: translateY(-2px);
 }
 
 .batch-pill.active .batch-radio {
   border-color: var(--accent-green);
   background-color: var(--accent-green);
-  box-shadow: 0 0 8px var(--accent-green);
+  box-shadow: none;
 }
 
 .hidden-select {
@@ -1818,13 +1823,13 @@ body {
   border: none;
   border-radius: 999px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 255, 135, 0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
   transition: var(--transition-spring);
 }
 
 .submit-action-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.55), 0 3px 8px rgba(0, 255, 135, 0.25);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.55);
   filter: brightness(1.05);
 }
 
@@ -3302,4 +3307,298 @@ body {
   .modern-form {
     padding: 1.35rem 0.8rem;
   }
+}
+
+
+/* ============================================================
+   GUIDELINE PDF BUTTON
+   ============================================================ */
+.guideline-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  padding: 10px 20px;
+  background: rgba(0, 242, 254, 0.08);
+  border: 1px solid rgba(0, 242, 254, 0.35);
+  border-radius: 10px;
+  color: #00f2fe;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.guideline-btn svg {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.guideline-btn:hover {
+  background: rgba(0, 242, 254, 0.16);
+  border-color: rgba(0, 242, 254, 0.7);
+  box-shadow: none;
+  transform: translateY(-1px);
+  color: #00f2fe;
+  text-decoration: none;
+}
+
+.guideline-btn:active {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   GUIDELINE REMINDER (before submit button)
+   ============================================================ */
+.guideline-reminder {
+  margin-top: 10px;
+  text-align: center;
+  color: rgba(180, 220, 255, 0.75);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.guideline-inline-link {
+  color: #00f2fe;
+  font-weight: 500;
+}
+
+/* ============================================================
+   FILE UPLOAD FIELD — Upload Your Concept Paper
+   ============================================================ */
+.file-upload-input {
+  display: none;
+}
+
+.file-upload-wrapper {
+  position: relative;
+  border: 1.5px dashed rgba(0, 255, 135, 0.35);
+  border-radius: 14px;
+  background: rgba(4, 18, 36, 0.6);
+  transition: border-color 0.25s ease, background 0.25s ease;
+  overflow: hidden;
+}
+
+.file-upload-wrapper:hover,
+.file-upload-wrapper.drag-over {
+  border-color: rgba(0, 255, 135, 0.7);
+  background: rgba(0, 255, 135, 0.05);
+}
+
+.file-upload-wrapper.has-file {
+  border-style: solid;
+  border-color: rgba(0, 255, 135, 0.5);
+  background: rgba(0, 255, 135, 0.04);
+}
+
+.file-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 2rem 1.5rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+.file-upload-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0, 255, 135, 0.08);
+  border: 1px solid rgba(0, 255, 135, 0.25);
+  color: var(--accent-green);
+  transition: background 0.2s ease;
+}
+
+.file-upload-wrapper:hover .file-upload-icon {
+  background: rgba(0, 255, 135, 0.16);
+}
+
+.file-upload-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.file-upload-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(200, 230, 255, 0.9);
+}
+
+.file-upload-hint {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.78rem;
+  color: rgba(140, 180, 220, 0.6);
+}
+
+/* Selected file info bar */
+.file-selected-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: rgba(0, 255, 135, 0.08);
+  border-top: 1px solid rgba(0, 255, 135, 0.25);
+  color: var(--accent-green);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.file-selected-info svg {
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+#file-selected-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: rgba(200, 230, 255, 0.9);
+}
+
+.file-remove-btn {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: rgba(200, 230, 255, 0.5);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s ease;
+}
+
+.file-remove-btn:hover {
+  color: #f43f5e;
+}
+
+.form-group.has-error .file-upload-wrapper {
+  border-color: #f43f5e;
+}
+
+.form-group.has-success .file-upload-wrapper {
+  border-color: var(--accent-green);
+}
+
+/* ============================================================
+   CONCEPT PAPER TEMPLATE DOWNLOAD LINK
+   ============================================================ */
+.template-download-box {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.template-download-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--accent-green);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(0, 255, 135, 0.4);
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  cursor: pointer;
+}
+
+.template-download-link:hover {
+  color: #fff;
+  text-decoration-color: rgba(255, 255, 255, 0.8);
+}
+
+.template-download-link svg {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+/* ============================================================
+   ABOUT PAGE CONTACT CARDS
+   ============================================================ */
+.contact-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.8rem;
+  width: 100%;
+}
+
+.contact-card-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.35rem 1.6rem;
+  background: rgba(4, 18, 36, 0.7);
+  border: 1px solid rgba(0, 255, 135, 0.25);
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.contact-card-item:hover {
+  background: rgba(0, 255, 135, 0.08);
+  border-color: var(--accent-green);
+  transform: translateY(-2px);
+}
+
+.contact-card-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(0, 255, 135, 0.1);
+  border: 1px solid rgba(0, 255, 135, 0.25);
+  color: var(--accent-green);
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.contact-card-item:hover .contact-card-icon {
+  background: rgba(0, 255, 135, 0.2);
+}
+
+.contact-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.contact-card-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.contact-card-value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text-pure);
+  transition: color 0.2s ease;
+}
+
+.contact-card-item:hover .contact-card-value {
+  color: var(--accent-green);
 }
